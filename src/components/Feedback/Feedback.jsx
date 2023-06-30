@@ -7,20 +7,31 @@ export class Feedback extends React.Component {
     bad: 0,
   };
   handleGoodBtn = () => {
-      this.setState({ good: 10 });
-      console.log('good');
+    this.setState(prevState => {
+      return { good: ++prevState.good };
+    });
+
+    console.log('good');
   };
-    handleNeutralBtn = () => {
-      this.setState({ neutral: 20 });
+  handleNeutralBtn = () => {
+    this.setState(prevState => {
+      return { neutral: ++prevState.neutral };
+    });
     console.log('neutral');
   };
-    handleBadBtn = () => {
-      this.setState({ bad: 30 });
+  handleBadBtn = () => {
+    this.setState(prevState => {
+      return { bad: ++prevState.bad };
+    });
     console.log('bad');
   };
 
-  render() {
-    return (
+    render() {
+        let total = this.state.good + this.state.neutral + this.state.bad;
+        let interest;
+        if (!total) interest = "0%"; else interest = (this.state.good / total * 100).toFixed(0)+"%";
+
+       return (
       <>
         <h2>Please leave feedback</h2>
         <div className="btn-wrap">
@@ -38,6 +49,8 @@ export class Feedback extends React.Component {
         <p>Good: {this.state.good}</p>
         <p>Neutral: {this.state.neutral}</p>
         <p>Bad: {this.state.bad}</p>
+        <p>Total: {total}</p>
+        <p>Positive feedback: {interest}</p>
       </>
     );
   }
