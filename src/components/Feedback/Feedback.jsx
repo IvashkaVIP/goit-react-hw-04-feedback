@@ -1,4 +1,5 @@
 import React from 'react';
+import { Statistics } from './Statistics';
 
 export class Feedback extends React.Component {
   state = {
@@ -44,13 +45,16 @@ export class Feedback extends React.Component {
           <button type="button" onClick={this.handleBadBtn}>
             Bad
           </button>
-        </div>
-        <h2>Statistics</h2>
+               </div>
+        
+               <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={total} positivePercentage={interest}/>
+
+        {/* <h2>Statistics</h2>
         <p>Good: {this.state.good}</p>
         <p>Neutral: {this.state.neutral}</p>
         <p>Bad: {this.state.bad}</p>
         <p>Total: {total}</p>
-        <p>Positive feedback: {interest}</p>
+        <p>Positive feedback: {interest}</p> */}
       </>
     );
   }
