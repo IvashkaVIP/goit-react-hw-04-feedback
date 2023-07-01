@@ -11,22 +11,13 @@ export class Feedback extends React.Component {
     bad: 0,
   };
 
-  a; 
-
-  onLeaveFeedBack = (evt) => {
+  onLeaveFeedBack = (evt, btnName) => {
     this.setState(prevState => ({
-      [evt.target.innerText]: prevState[evt.target.innerText] + 1,
+      [btnName]: ++prevState[btnName],
     }));
-
-    this.a = evt.target.innerText;    
-
   };
 
-  print()
-  { console.log(this.a); }
-
   countTotalFeedback() {
-    this.print();
     const ref = this.state;
     return ref.good + ref.neutral + ref.bad;
   }
@@ -47,11 +38,6 @@ export class Feedback extends React.Component {
             onLeaveFeedBack={this.onLeaveFeedBack}
           />
 
-          {/* <FeedbackOptions
-            onGood={this.handleGoodBtn}
-            onNeutral={this.handleNeutralBtn}
-            onBad={this.handleBadBtn}
-          /> */}
         </Section>
 
         {total ? (

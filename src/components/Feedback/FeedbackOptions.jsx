@@ -1,14 +1,13 @@
-export const FeedbackOptions = ({ options, onLeaveFeedBack }) => {
-  
-    // console.log(onLeaveFeedBack);
-
-  return (
-    <div className="btn-wrap">
-      {Object.keys(options).map(option => (
-        <button type="button" key={option} onClick={onLeaveFeedBack}>
-          {option}
-        </button>
-      ))}
-    </div>
-  );
-};
+export const FeedbackOptions = ({ options, onLeaveFeedBack }) => (
+  <div className="btn-wrap">
+    {Object.keys(options).map(option => (
+      <button
+        type="button"
+        key={option}
+        onClick={evt => onLeaveFeedBack(evt, option)}
+      >
+        {option}
+      </button>
+    ))}
+  </div>
+);
