@@ -27,12 +27,16 @@ export class Feedback extends React.Component {
     console.log('bad');
   };
 
-    render() {
-        let total = this.state.good + this.state.neutral + this.state.bad;
-        let interest;
-        if (!total) interest = "0%"; else interest = (this.state.good / total * 100).toFixed(0)+"%";
+  countTotalFeedback() {
+    return this.state.good + this.state.neutral + this.state.bad;
+  }
+  countPositiveFeedbackPercentage() {
+    let total = this.countTotalFeedback();
+    return !total ? '0%' : ((this.state.good / total) * 100).toFixed(0) + '%';
+  }
 
-       return (
+  render() {
+    return (
       <>
         <h2>Please leave feedback</h2>
         <div className="btn-wrap">
@@ -45,9 +49,15 @@ export class Feedback extends React.Component {
           <button type="button" onClick={this.handleBadBtn}>
             Bad
           </button>
-               </div>
-        
-               <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={total} positivePercentage={interest}/>
+        </div>
+
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.countTotalFeedback()}
+          positivePercentage={this.countPositiveFeedbackPercentage()}
+        />
 
         {/* <h2>Statistics</h2>
         <p>Good: {this.state.good}</p>
