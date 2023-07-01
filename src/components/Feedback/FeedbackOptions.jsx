@@ -1,15 +1,14 @@
-export const FeedbackOptions = ({ onGood, onNeutral, onBad }) => (
-  <>
+export const FeedbackOptions = ({ options, onLeaveFeedBack }) => {
+  
+    // console.log(onLeaveFeedBack);
+
+  return (
     <div className="btn-wrap">
-      <button type="button" onClick={onGood}>
-        Good
-      </button>
-      <button type="button" onClick={onNeutral}>
-        Neutral
-      </button>
-      <button type="button" onClick={onBad}>
-        Bad
-      </button>
+      {Object.keys(options).map(option => (
+        <button type="button" key={option} onClick={onLeaveFeedBack}>
+          {option}
+        </button>
+      ))}
     </div>
-  </>
-);
+  );
+};
