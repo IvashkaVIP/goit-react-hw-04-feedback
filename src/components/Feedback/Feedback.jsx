@@ -1,6 +1,7 @@
 import React from 'react';
 import { Statistics } from './Statistics';
 import { FeedbackOptions } from './FeedbackOptions';
+import { Section } from './Section';
 
 export class Feedback extends React.Component {
   state = {
@@ -37,39 +38,28 @@ export class Feedback extends React.Component {
   }
 
   render() {
+    const { good, neutral, bad } = this.state;
     return (
       <>
-        <FeedbackOptions
-          onGood={this.handleGoodBtn}
-          onNeutral={this.handleNeutralBtn}
-          onBad={this.handleBadBtn}
-        />
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            onGood={this.handleGoodBtn}
+            onNeutral={this.handleNeutralBtn}
+            onBad={this.handleBadBtn}
+          />
+        </Section>
 
-        <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
-        />
-
-        </>
+        <Section title="Statistics">
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
+          />
+        </Section>
+      </>
     );
   }
 }
 
-// export const Feedback = ({ }) => {
-//     return (
-//       <>
-//         <h2>Please leave feedback</h2>
-//         <div className="btn-wrap">
-//           <button type="button">Good</button>
-//           <button type="button">Neutral</button>
-//           <button type="button">Bad</button>
-//         </div>
-//         <h2>Statistics</h2>
-//         <p>Good: </p>
-//         <p>Neutral: </p>
-//         <p>Bad: </p>
-//       </>
-//     );}
