@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const FeedbackOptions = ({ options, onLeaveFeedBack }) => (
   <div className="btn-wrap">
     {Object.keys(options).map(option => (
@@ -11,3 +13,8 @@ export const FeedbackOptions = ({ options, onLeaveFeedBack }) => (
     ))}
   </div>
 );
+
+FeedbackOptions.propTypes = {
+    options: PropTypes.object.isRequired,
+    onLeaveFeedBack: PropTypes.func.isRequired,
+};
