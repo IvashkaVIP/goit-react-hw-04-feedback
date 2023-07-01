@@ -10,28 +10,26 @@ export class Feedback extends React.Component {
     neutral: 0,
     bad: 0,
   };
+  
   handleGoodBtn = () => {
     this.setState(prevState => {
       return { good: ++prevState.good };
     });
-
-    console.log('good');
   };
   handleNeutralBtn = () => {
     this.setState(prevState => {
       return { neutral: ++prevState.neutral };
     });
-    console.log('neutral');
   };
   handleBadBtn = () => {
     this.setState(prevState => {
       return { bad: ++prevState.bad };
     });
-    console.log('bad');
   };
 
   countTotalFeedback() {
-    return this.state.good + this.state.neutral + this.state.bad;
+    const ref = this.state;
+    return ref.good + ref.neutral + ref.bad;
   }
   countPositiveFeedbackPercentage() {
     let total = this.countTotalFeedback();
@@ -41,6 +39,7 @@ export class Feedback extends React.Component {
   render() {
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
+    const positivePercentage = this.countPositiveFeedbackPercentage();
     return (
       <>
         <Section title="Please leave feedback">
@@ -58,7 +57,7 @@ export class Feedback extends React.Component {
               neutral={neutral}
               bad={bad}
               total={total}
-              positivePercentage={this.countPositiveFeedbackPercentage()}
+              positivePercentage={positivePercentage}
             />
           </Section>
         ) : (
