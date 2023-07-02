@@ -1,0 +1,11 @@
+.btn-wrap {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.btn {
+    width: 120px;
+    height: 30px;
+    border-radius: 30px;
+}
