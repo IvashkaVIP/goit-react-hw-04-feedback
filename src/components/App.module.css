@@ -1,5 +1,7 @@
 .container {
-    width: 300px;
+    width: 400px;
     background-color: antiquewhite;
     margin: 30px auto;
+    padding: 30px;
+    box-shadow: 0px 0px 15px 5px rgb(120, 120, 120);
 }
