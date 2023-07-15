@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Component } from "react";
 import { Section } from "./Section/Section";
 import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions";
@@ -6,7 +7,42 @@ import { Notification } from "./Notification/Notification";
 import css from './App.module.css'
 
 
-export class App extends Component {
+export const App = () => {
+
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+
+   
+  const onLeaveFeedBack = (evt, btnName) => {
+    console.log('Click on Btn');
+  };
+
+  
+  // onLeaveFeedBack = (evt, btnName) => {
+  //    this.setState(prevState => ({
+  //      [btnName]: ++prevState[btnName],
+  //    }));
+  //  };
+
+
+  return (
+    <div className={css.container}>
+      <Section title="Please leave feedback">
+        <FeedbackOptions
+          options={{ good, neutral, bad }}
+          onLeaveFeedBack={onLeaveFeedBack}
+        />
+        <h1>
+          {good} {neutral} {bad}
+        </h1>
+      </Section>
+    </div>
+  );
+
+}
+//-------------------------------------------------------------------------
+export class OldApp extends Component {
   state = {
     good: 0,
     neutral: 0,
