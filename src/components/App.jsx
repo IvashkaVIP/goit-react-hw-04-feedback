@@ -13,9 +13,25 @@ export const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
+
+
    
   const onLeaveFeedBack = (evt, btnName) => {
-    console.log('Click on Btn');
+    console.log('Click on Btn ', btnName);
+    
+    switch (btnName) {
+      case 'good':
+        setGood(good+1);
+        break;
+      case 'neutral':
+        setNeutral(neutral+1);
+        break;
+      case 'bad':
+        setBad(bad+1);
+        break;
+      
+      default: Notification.error('unknown parameter');
+    }
   };
 
   
